@@ -10,6 +10,3 @@ def ocr_frames(frames: list) -> list:
             ans.append(text)
         
     return ans
-
-frames = video_processing("test2.mp4")
-print(ocr_frames(frames=frames))

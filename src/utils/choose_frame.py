@@ -1,5 +1,6 @@
 import torch
 import clip
+import cv2
 from PIL import Image
 from video_processing import video_processing
 
@@ -41,6 +42,7 @@ def choose_frame(frames: list, objects: list, threshold=0.2, batch_size=32):
 
             # similarity shape: [B, num_text]
             similarity = image_features @ text_features.T
+            print(similarity)
 
         # Lấy max mỗi ảnh trong batch
         max_vals = similarity.max(dim=1).values  # shape [B]
@@ -55,7 +57,7 @@ def choose_frame(frames: list, objects: list, threshold=0.2, batch_size=32):
 
 frames = video_processing("test2.mp4")
 
-later = choose_frame(frames, ["person", "dog"])
+later = choose_frame(frames, ["a photo of person","a photo of a human", "a photo of a dog"])
 
 print("number of chosen frame: " + str(len(later)))
 
