@@ -1,1 +1,4 @@
-llama.cpp
+*.jpg
+*.gguf
+*.whl
+
